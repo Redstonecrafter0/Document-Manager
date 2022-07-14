@@ -1,42 +1,41 @@
 .gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+build
+.idea/*
+!.idea/gradle.xml
 *.iws
 *.iml
 *.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+out
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
+dist
+tmp
+out-tsc
+bazel-out
+
+node_modules
+npm-debug.log
+yarn-error.log
+
 .project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
-### VS Code ###
-.vscode/
+.angular
+.sass-cache/
+connect.lock
+coverage
+libpeerconnection.log
+testem.log
+typings
 
-### Mac OS ###
-.DS_Store
+Server/src/main/resources/static

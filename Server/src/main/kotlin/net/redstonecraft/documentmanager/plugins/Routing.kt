@@ -1,21 +1,18 @@
-package net.redstonecraft.document_manager.plugins
+package net.redstonecraft.documentmanager.plugins
 
 import io.ktor.server.routing.*
-import io.ktor.http.*
 import io.ktor.server.http.content.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
-import io.ktor.server.request.*
 
 fun Application.configureRouting() {
-
-
     routing {
-        get("/") {
+        get("/api") {
             call.respondText("Hello World!")
-        } // Static plugin. Try to access `/static/index.html`
-        static("/static") {
+        }
+        static("/") {
             resources("static")
+            defaultResource("index.html", "static")
         }
     }
 }

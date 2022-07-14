@@ -1,24 +1,18 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.7.10"
 }
 
 group = "net.redstonecraft"
-version = "1.0-SNAPSHOT"
+version = "0.0.1"
 
-repositories {
-    mavenCentral()
-}
+tasks {
+    task<Exec>("buildDockerImage") {
+        doLast {
+            commandLine("docker", "build", ".", "-t", "redstonecrafter0/document-manager:$version", "-t", "redstonecrafter0/document-manager")
+        }
+    }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    register("buildProject") {
+        dependsOn(subprojects.first { it.name == "Server" }.tasks.findByName("buildServer")!!)
+        finalizedBy("buildDockerImage")
+    }
 }

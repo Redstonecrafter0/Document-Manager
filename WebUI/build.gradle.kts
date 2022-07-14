@@ -4,12 +4,18 @@ plugins {
 group = "net.redstonecraft"
 version = "0.0.1"
 
+val npmCommand = if ("windows" in System.getProperty("os.name").toLowerCase()) "npm.cmd" else "npm"
+
 tasks {
-  task<Exec>("serve") {
-    commandLine("")
+  task<Exec>("npmServe") {
+    commandLine(npmCommand, "run", "start")
   }
-  task("build") {
+
+  task<Exec>("npmBuild") {
+    commandLine(npmCommand, "run", "build")
   }
-  task("test") {
+
+  task<Exec>("npmTest") {
+    commandLine(npmCommand, "run", "test")
   }
 }
