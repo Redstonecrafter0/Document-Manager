@@ -5,9 +5,11 @@ group = "net.redstonecraft"
 version = "0.0.1"
 
 tasks {
-    task<Exec>("buildDockerImage") {
+    task("buildDockerImage") {
         doLast {
-            commandLine("docker", "build", ".", "-t", "redstonecrafter0/document-manager:$version", "-t", "redstonecrafter0/document-manager")
+            exec {
+                commandLine("docker", "build", ".", "-t", "redstonecrafter0/document-manager:$version", "-t", "redstonecrafter0/document-manager")
+            }
         }
     }
 
